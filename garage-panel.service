@@ -1,0 +1,30 @@
+# =============================================================================
+# garage-panel.service — systemd unit to run the panel on boot
+#
+# Install:
+#   sudo cp garage-panel.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable garage-panel
+#   sudo systemctl start garage-panel
+#
+# Logs:
+#   sudo journalctl -u garage-panel -f
+# =============================================================================
+
+[Unit]
+Description=Garage LED Panel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/home/pi/garage_panel
+ExecStart=/usr/bin/python3 /home/pi/garage_panel/main.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

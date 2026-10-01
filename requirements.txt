@@ -1,0 +1,7 @@
+# Garage LED Panel — Python dependencies
+# Install with: pip3 install -r requirements.txt
+
+requests>=2.28.0
+
+# rpi-rgb-led-matrix Python bindings are built from source — see README.
+# Do NOT pip install rgbmatrix; build it from the GitHub repo instead.
